@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2670FEF71B1D9C6A009CACC1 /* WMGaugeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2670FEF61B1D9C6A009CACC1 /* WMGaugeView.m */; };
+		2670FEFB1B1DA5B2009CACC1 /* SFGaugeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2670FEFA1B1DA5B2009CACC1 /* SFGaugeView.m */; };
 		26E435071B1439C900101241 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E435061B1439C900101241 /* main.m */; };
 		26E4350A1B1439C900101241 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E435091B1439C900101241 /* AppDelegate.m */; };
 		26E435121B1439C900101241 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26E435111B1439C900101241 /* Images.xcassets */; };
@@ -49,6 +50,8 @@
 		21A082BDA64E79DFF931BF13 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		2670FEF51B1D9C6A009CACC1 /* WMGaugeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMGaugeView.h; sourceTree = "<group>"; };
 		2670FEF61B1D9C6A009CACC1 /* WMGaugeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMGaugeView.m; sourceTree = "<group>"; };
+		2670FEF91B1DA5B2009CACC1 /* SFGaugeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFGaugeView.h; sourceTree = "<group>"; };
+		2670FEFA1B1DA5B2009CACC1 /* SFGaugeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFGaugeView.m; sourceTree = "<group>"; };
 		26E435011B1439C900101241 /* ZXChart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZXChart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26E435051B1439C900101241 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26E435061B1439C900101241 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -127,6 +130,15 @@
 			path = WMGaugeView;
 			sourceTree = "<group>";
 		};
+		2670FEF81B1DA5B2009CACC1 /* SFGaugeView */ = {
+			isa = PBXGroup;
+			children = (
+				2670FEF91B1DA5B2009CACC1 /* SFGaugeView.h */,
+				2670FEFA1B1DA5B2009CACC1 /* SFGaugeView.m */,
+			);
+			path = SFGaugeView;
+			sourceTree = "<group>";
+		};
 		26E434F81B1439C900101241 = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +162,7 @@
 		26E435031B1439C900101241 /* ZXChart */ = {
 			isa = PBXGroup;
 			children = (
+				2670FEF81B1DA5B2009CACC1 /* SFGaugeView */,
 				2670FEF41B1D9C6A009CACC1 /* WMGaugeView */,
 				26E435781B149A1500101241 /* UUChart */,
 				26E4352A1B148D0F00101241 /* Common */,
@@ -409,6 +422,7 @@
 				26E435851B149A1500101241 /* UUBar.m in Sources */,
 				26E435881B149A1500101241 /* UUChartLabel.m in Sources */,
 				26E435431B148D0F00101241 /* thirdPageViewController.m in Sources */,
+				2670FEFB1B1DA5B2009CACC1 /* SFGaugeView.m in Sources */,
 				26E4350A1B1439C900101241 /* AppDelegate.m in Sources */,
 				26E435891B149A1500101241 /* UUColor.m in Sources */,
 				26E435401B148D0F00101241 /* MainTabBarViewController.m in Sources */,

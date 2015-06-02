@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SFGaugeView.h"
 
 @interface secondPageViewController : UIViewController
-
+@property (nonatomic) SFGaugeView *sfGaugeView;
 @end

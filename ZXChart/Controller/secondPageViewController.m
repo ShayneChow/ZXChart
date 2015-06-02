@@ -8,12 +8,14 @@
 
 #import "secondPageViewController.h"
 #import "PNChart.h"
+#import "SFGaugeView.h"
 
-@interface secondPageViewController () <PNChartDelegate>
+@interface secondPageViewController () <PNChartDelegate, SFGaugeViewDelegate>
 
 @property (nonatomic) PNLineChart *lineChart;
 
 @end
+
 
 @implementation secondPageViewController
 
@@ -29,6 +31,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    // simple gauge view
+    _sfGaugeView = [[SFGaugeView alloc] initWithFrame:CGRectMake(20, 330, SCREEN_WIDTH-40, SCREEN_WIDTH-80)];
+    [self.view addSubview:_sfGaugeView];
+    [self loadSFGaugeView];
     
     //For Line Chart
     self.lineChart = [[PNLineChart alloc] initWithFrame:CGRectMake(0, 135.0, SCREEN_WIDTH, 200.0)];
@@ -93,6 +100,33 @@
     UIView *legend = [self.lineChart getLegendWithMaxWidth:320];
     [legend setFrame:CGRectMake(30, 340, legend.frame.size.width, legend.frame.size.width)];
     [self.view addSubview:legend];
+}
+
+#pragma mark - SFGaugeView
+- (void)loadSFGaugeView{
+    _sfGaugeView.maxlevel = 100.0;
+    _sfGaugeView.minlevel = 0;
+    _sfGaugeView.needleColor = [UIColor colorWithRed:0.529 green:0.524 blue:0.678 alpha:1.000];
+    _sfGaugeView.bgColor = [UIColor colorWithRed:0.188 green:0.514 blue:0.984 alpha:1.000];
+    _sfGaugeView.hideLevel = NO;
+    _sfGaugeView.currentLevel = 0;
+    _sfGaugeView.autoAdjustImageColors = NO;
+    
+    [NSTimer scheduledTimerWithTimeInterval:2.0
+                                     target:self
+                                   selector:@selector(gaugeUpdateTimer:)
+                                   userInfo:nil
+                                    repeats:YES];
+}
+
+- (void) sfGaugeView:(SFGaugeView*) gaugeView didChangeLevel:(NSInteger) level{
+    
+//    _sfGaugeView.currentLevel = rand()%(int)gaugeView.maxlevel;
+}
+
+-(void)gaugeUpdateTimer:(NSTimer *)timer{
+    [_sfGaugeView setCurrentLevel:rand()%(int)_sfGaugeView.maxlevel];
+    NSLog(@"currentLevel = %ld",(long)_sfGaugeView.currentLevel);
 }
 
 - (void)didReceiveMemoryWarning {
