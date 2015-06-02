@@ -8,9 +8,11 @@
 
 #import "firstPageViewController.h"
 #import "UUChart.h"
+#import "WMGaugeView.h"
 
 @interface firstPageViewController () <UUChartDataSource>{
     UUChart *chartView;
+    WMGaugeView *gaugeView;
 }
 
 @end
@@ -39,6 +41,16 @@
                                               withSource:self
                                                withStyle:UUChartLineStyle];
     [chartView showInView:self.view];
+    
+    if (gaugeView) {
+        [gaugeView removeFromSuperview];
+        gaugeView = nil;
+    }
+    
+    gaugeView = [[WMGaugeView alloc] initWithFrame:CGRectMake(20, 230, [UIScreen mainScreen].bounds.size.width-40, [UIScreen mainScreen].bounds.size.width-40)];
+    [self.view addSubview:gaugeView];
+    gaugeView.backgroundColor = [UIColor clearColor];
+    [self loadGaugeView];
     
 }
 
@@ -98,6 +110,43 @@
 //判断显示最大最小值
 - (BOOL)UUChart:(UUChart *)chart ShowMaxMinAtIndex:(NSInteger)index{
     return 4;
+}
+
+#pragma mark - WMGaugeView
+- (void)loadGaugeView{
+    gaugeView.maxValue = 100.0;
+    gaugeView.scaleDivisions = 10;
+    gaugeView.scaleSubdivisions = 5;
+    gaugeView.scaleStartAngle = 30;
+    gaugeView.scaleEndAngle = 280;
+    gaugeView.innerBackgroundStyle = WMGaugeViewInnerBackgroundStyleFlat;
+    gaugeView.showScaleShadow = YES;
+    gaugeView.scaleFont = [UIFont fontWithName:@"AvenirNext-UltraLight" size:0.065];
+    gaugeView.scalesubdivisionsAligment = WMGaugeViewSubdivisionsAlignmentCenter;
+    gaugeView.scaleSubdivisionsWidth = 0.002;
+    gaugeView.scaleSubdivisionsLength = 0.04;
+    gaugeView.scaleDivisionsWidth = 0.007;
+    gaugeView.scaleDivisionsLength = 0.07;
+    gaugeView.needleStyle = WMGaugeViewNeedleStyleFlatThin;
+    gaugeView.needleWidth = 0.012;
+    gaugeView.needleHeight = 0.4;
+    gaugeView.needleScrewStyle = WMGaugeViewNeedleScrewStylePlain;
+    gaugeView.needleScrewRadius = 0.05;
+    
+//    [gaugeView setValue:56.2 animated:YES duration:1.6 completion:^(BOOL finished) {
+//        NSLog(@"gaugeView animation complete");
+//    }];
+    [NSTimer scheduledTimerWithTimeInterval:2.0
+                                     target:self
+                                   selector:@selector(gaugeUpdateTimer:)
+                                   userInfo:nil
+                                    repeats:YES];
+}
+
+-(void)gaugeUpdateTimer:(NSTimer *)timer{
+    [gaugeView setValue:rand()%(int)gaugeView.maxValue animated:YES duration:1.6 completion:^(BOOL finished) {
+        NSLog(@"gaugeView animation complete");
+    }];
 }
 
 @end
